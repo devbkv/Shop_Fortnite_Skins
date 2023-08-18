@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../App.css';
-
 const Item = ({ item }) => {
   // console.log('Comp_Item', item);
   // console.log('item.offerId', item.mainId);

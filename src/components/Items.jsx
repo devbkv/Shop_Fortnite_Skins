@@ -22,34 +22,33 @@ const Items = () => {
     pageNumbers.push(i);
     console.log('totalPages', totalPages);
   }
-  // const [imgItem, setImgItem] = useState('');
-
-  // const papamsFetch = [offerId, displayName, price.finalPrice];
-  // console.log(items);
 
   useEffect(() => {
     fetchItems();
   }, []);
 
   async function fetchItems() {
-    const response = await axios.get('https://fortniteapi.io/v2/shop?lang=en', {
-      headers: { Authorization: '5d439298-065205d6-fc55387a-8e177815' },
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/v2/shop`, {
+      params: { lang: 'ru' },
+      headers: { Authorization: import.meta.env.VITE_API_KEY },
     });
-    // console.log(response.data.shop[2].offerId);
+
     setItems(response.data.shop);
     console.log('Всего айтемов:', response.data);
   }
 
-  // console.log('items.offerId', items.offerId);
-
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
         {currentItems.map((item) => (
           <Item item={item} key={item.offerId} />
         ))}
       </div>
-      <Pagination setCurrentPage={setCurrentPage} pageNumbers={pageNumbers} />
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        pageNumbers={pageNumbers}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
