@@ -8,8 +8,8 @@ function App() {
     <div className="grid gap-4 max-w-screen-xl mx-auto pt-4 pb-4 p-1">
       <Header />
       <div className="flex place-content-between">
-        <Search />
         <Filter />
+        <Search />
       </div>
       <Items />
     </div>
