@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsSearch } from 'react-icons/bs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSearchQuery } from '../features/search/searchSlice';
 
 const Search = () => {

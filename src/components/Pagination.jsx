@@ -11,12 +11,10 @@ const Pagination = () => {
   // Получаю стейты:
   const items = useSelector((state) => state.items.items);
   const currentPage = useSelector((state) => state.pagination.currentPage);
-  console.log('currentPage:', currentPage);
+  console.log('Выбрал страницу:', currentPage);
 
   // Логика пагинации
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 12;
+  const itemsPerPage = 16;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
@@ -33,8 +31,8 @@ const Pagination = () => {
   useEffect(() => {
     // Передача currentItems
     dispatch(setCurrentItems(currentItems));
-    console.log('currentItems:', currentItems);
-  }, [currentPage]);
+    console.log('currentItems_pagin:', currentItems);
+  }, [currentPage, items]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const pageNumbers = [];
